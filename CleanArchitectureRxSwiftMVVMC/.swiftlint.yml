@@ -1,4 +1,7 @@
 
 excluded:
-  - CleanArchitectureRxSwiftMVVMC/AppDelegate.swift
-  - CleanArchitectureRxSwiftMVVMC/SceneDelegate.swift
+  - CleanArchitectureRxSwiftMVVMC/Application/AppDelegate.swift
+  - CleanArchitectureRxSwiftMVVMC/Application/SceneDelegate.swift
+type_name:
+  excluded:
+    - ID
