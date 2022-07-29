@@ -38,6 +38,12 @@ class Coordinator<CoordinationResult>: ChildCoordinator, ParentCoordinator {
             "Do not use this method directly. Implement a subclass and override this method."
         )
     }
+
+    func activate(childCoordinator: ChildCoordinator) {
+        self.childCoordinators.append(childCoordinator)
+        childCoordinator.parentCoordinator = self
+        childCoordinator.start()
+    }
     
     func resignActive(with coordinationResult: CoordinationResult? = nil) {
         self.childCoordinators.removeAll()

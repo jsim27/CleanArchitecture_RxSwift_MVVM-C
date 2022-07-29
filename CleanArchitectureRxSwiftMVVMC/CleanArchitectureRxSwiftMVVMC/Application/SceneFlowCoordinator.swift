@@ -22,9 +22,8 @@ class SceneFlowCoordinator: Coordinator<Void> {
             navigationController: navigationController,
             tabBarController: tabBarController
         )
-        mainTabBarFlowCoordinator.parentCoordinator = self
-        mainTabBarFlowCoordinator.start()
-        self.childCoordinators.append(mainTabBarFlowCoordinator)
+        
+        self.activate(childCoordinator: mainTabBarFlowCoordinator)
         self.window.rootViewController = navigationController
         self.window.makeKeyAndVisible()
     }

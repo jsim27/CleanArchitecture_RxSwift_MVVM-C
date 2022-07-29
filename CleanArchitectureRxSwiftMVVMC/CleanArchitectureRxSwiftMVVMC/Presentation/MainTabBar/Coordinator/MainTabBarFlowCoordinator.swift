@@ -29,8 +29,7 @@ class MainTabBarFlowCoordinator: Coordinator<Void> {
             tabBarController: self.tabBarController,
             page: .movieSearch
         )
-        movieSearchCoordinator.parentCoordinator = self
-        movieSearchCoordinator.start()
-        self.childCoordinators.append(movieSearchCoordinator)
+        
+        self.activate(childCoordinator: movieSearchCoordinator)
     }
 }
