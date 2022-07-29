@@ -9,7 +9,7 @@ import UIKit
 
 class MainTabBarFlowCoordinator: Coordinator {
 
-    var parentCoordinator: ParentCoordinator?
+    weak var parentCoordinator: ParentCoordinator?
     var childCoordinators: [ChildCoordinator]
     var navigationController: UINavigationController
     var tabBarController: UITabBarController

@@ -9,7 +9,7 @@ import UIKit
 
 class MovieSearchCoordinator: Coordinator {
 
-    var parentCoordinator: ParentCoordinator?
+    weak var parentCoordinator: ParentCoordinator?
     var childCoordinators: [ChildCoordinator]
     private var navigationController: UINavigationController
     private var tabBarController: UITabBarController
