@@ -7,20 +7,17 @@
 
 import UIKit
 
-class MainTabBarFlowCoordinator: Coordinator {
+class MainTabBarFlowCoordinator: Coordinator<Void> {
 
-    weak var parentCoordinator: ParentCoordinator?
-    var childCoordinators: [ChildCoordinator]
     var navigationController: UINavigationController
     var tabBarController: UITabBarController
 
     init(navigationController: UINavigationController, tabBarController: UITabBarController) {
-        self.childCoordinators = []
         self.navigationController = navigationController
         self.tabBarController = tabBarController
     }
 
-    func start() {
+    override func start() {
         self.tabBarController.setViewControllers([], animated: false)
         self.navigationController.viewControllers = [self.tabBarController]
         self.activateMovieSearchCoordinator()
@@ -35,14 +32,5 @@ class MainTabBarFlowCoordinator: Coordinator {
         movieSearchCoordinator.parentCoordinator = self
         movieSearchCoordinator.start()
         self.childCoordinators.append(movieSearchCoordinator)
-
     }
-
-    func childCoordinator(
-        _ childCoordinator: ChildCoordinator,
-        didResignActiveWith result: CoordinationResult
-    ) {
-        self.childCoordinators = self.childCoordinators.filter { $0 !== childCoordinator }
-    }
-
 }

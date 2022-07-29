@@ -18,24 +18,37 @@ protocol ParentCoordinator: AnyObject {
 
     var childCoordinators: [ChildCoordinator] { get set }
 
-    func childCoordinator(
+    func childCoordinator<CoordinationResult>(
         _ childCoordinator: ChildCoordinator,
-        didResignActiveWith result: CoordinationResult
+        didResignActiveWith result: CoordinationResult?
     )
 }
 
-protocol Coordinator: ChildCoordinator, ParentCoordinator { }
+class Coordinator<CoordinationResult>: ChildCoordinator, ParentCoordinator {
 
-extension Coordinator {
+    weak var parentCoordinator: ParentCoordinator?
+    var childCoordinators: [ChildCoordinator]
 
-    func resignActive() {
-        self.childCoordinators.removeAll()
-        self.parentCoordinator?.childCoordinator(self, didResignActiveWith: .none)
+    init() {
+        self.childCoordinators = []
     }
-}
 
-enum CoordinationResult {
-    case none
-    case integer(Int)
-    case string(String)
+    func start() {
+
+    }
+
+    func resignActive(with coordinationResult: CoordinationResult?) {
+        self.childCoordinators.removeAll()
+        self.parentCoordinator?.childCoordinator(
+            self,
+            didResignActiveWith: coordinationResult
+        )
+    }
+
+    func childCoordinator<CoordinationResult>(
+        _ childCoordinator: ChildCoordinator,
+        didResignActiveWith result: CoordinationResult
+    ) {
+        self.childCoordinators = self.childCoordinators.filter { $0 !== childCoordinator }
+    }
 }

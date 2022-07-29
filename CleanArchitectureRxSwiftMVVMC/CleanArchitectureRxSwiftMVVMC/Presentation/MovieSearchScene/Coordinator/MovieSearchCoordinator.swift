@@ -7,22 +7,19 @@
 
 import UIKit
 
-class MovieSearchCoordinator: Coordinator {
+class MovieSearchCoordinator: Coordinator<Void> {
 
-    weak var parentCoordinator: ParentCoordinator?
-    var childCoordinators: [ChildCoordinator]
     private var navigationController: UINavigationController
     private var tabBarController: UITabBarController
     private var page: TabBarPage
 
     init(navigationController: UINavigationController, tabBarController: UITabBarController, page: TabBarPage) {
-        self.childCoordinators = []
         self.navigationController = navigationController
         self.tabBarController = tabBarController
         self.page = page
     }
 
-    func start() {
+    override func start() {
         let movieSearchViewController = MovieSearchViewController()
         self.tabBarController.setViewControllers([movieSearchViewController], animated: false)
         movieSearchViewController.tabBarItem = UITabBarItem(
@@ -31,12 +28,5 @@ class MovieSearchCoordinator: Coordinator {
             tag: self.page.index
         )
         movieSearchViewController.view.backgroundColor = .white
-    }
-
-    func childCoordinator(
-    _ childCoordinator: ChildCoordinator,
-    didResignActiveWith result: CoordinationResult
-    ) {
-        self.childCoordinators = self.childCoordinators.filter { $0 !== childCoordinator }
     }
 }

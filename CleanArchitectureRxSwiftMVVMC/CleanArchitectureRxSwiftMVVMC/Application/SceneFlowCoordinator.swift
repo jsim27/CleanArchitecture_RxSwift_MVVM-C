@@ -31,7 +31,7 @@ class SceneFlowCoordinator: ParentCoordinator {
         self.window.makeKeyAndVisible()
     }
 
-    func childCoordinator(
+    func childCoordinator<CoordinationResult>(
         _ childCoordinator: ChildCoordinator,
         didResignActiveWith result: CoordinationResult
     ) {
