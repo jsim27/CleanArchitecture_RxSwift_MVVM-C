@@ -7,17 +7,15 @@
 
 import UIKit
 
-class SceneFlowCoordinator: ParentCoordinator {
+class SceneFlowCoordinator: Coordinator<Void> {
 
-    var childCoordinators: [ChildCoordinator]
     private var window: UIWindow
 
     init(window: UIWindow) {
-        self.childCoordinators = []
         self.window = window
     }
 
-    func start() {
+    override func start() {
         let navigationController = UINavigationController()
         let tabBarController = UITabBarController()
         let mainTabBarFlowCoordinator = MainTabBarFlowCoordinator(
@@ -29,12 +27,5 @@ class SceneFlowCoordinator: ParentCoordinator {
         self.childCoordinators.append(mainTabBarFlowCoordinator)
         self.window.rootViewController = navigationController
         self.window.makeKeyAndVisible()
-    }
-
-    func childCoordinator<CoordinationResult>(
-        _ childCoordinator: ChildCoordinator,
-        didResignActiveWith result: CoordinationResult
-    ) {
-        self.childCoordinators = self.childCoordinators.filter { $0 !== childCoordinator }
     }
 }
