@@ -34,10 +34,12 @@ class Coordinator<CoordinationResult>: ChildCoordinator, ParentCoordinator {
     }
 
     func start() {
-
+        fatalError(
+            "Do not use this method directly. Implement a subclass and override this method."
+        )
     }
-
-    func resignActive(with coordinationResult: CoordinationResult?) {
+    
+    func resignActive(with coordinationResult: CoordinationResult? = nil) {
         self.childCoordinators.removeAll()
         self.parentCoordinator?.childCoordinator(
             self,
@@ -47,8 +49,15 @@ class Coordinator<CoordinationResult>: ChildCoordinator, ParentCoordinator {
 
     func childCoordinator<CoordinationResult>(
         _ childCoordinator: ChildCoordinator,
-        didResignActiveWith result: CoordinationResult
+        didResignActiveWith result: CoordinationResult?
     ) {
-        self.childCoordinators = self.childCoordinators.filter { $0 !== childCoordinator }
+        if result == nil {
+            self.childCoordinators = self.childCoordinators.filter { $0 !== childCoordinator }
+            return
+        }
+
+        fatalError(
+            "CoordinationResult is unused. Override this method to utilize CoordinationResult."
+        )
     }
 }
