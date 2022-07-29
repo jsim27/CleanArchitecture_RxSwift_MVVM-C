@@ -9,15 +9,13 @@ import UIKit
 
 class MainTabBarFlowCoordinator: Coordinator {
 
-    var id: ID
     var parentCoordinator: ParentCoordinator?
-    var childCoordinators: [UUID: ChildCoordinator]
+    var childCoordinators: [ChildCoordinator]
     var navigationController: UINavigationController
     var tabBarController: UITabBarController
 
     init(navigationController: UINavigationController, tabBarController: UITabBarController) {
-        self.id = UUID()
-        self.childCoordinators = [:]
+        self.childCoordinators = []
         self.navigationController = navigationController
         self.tabBarController = tabBarController
     }
@@ -36,11 +34,15 @@ class MainTabBarFlowCoordinator: Coordinator {
         )
         movieSearchCoordinator.parentCoordinator = self
         movieSearchCoordinator.start()
-        self.childCoordinators[movieSearchCoordinator.id] = movieSearchCoordinator
+        self.childCoordinators.append(movieSearchCoordinator)
 
     }
 
-    func childCoordinator<T>(withIdentifier id: UUID, didResignActiveWith result: T) {
+    func childCoordinator(
+        _ childCoordinator: ChildCoordinator,
+        didResignActiveWith result: CoordinationResult
+    ) {
+        self.childCoordinators = self.childCoordinators.filter { $0 !== childCoordinator }
     }
 
 }

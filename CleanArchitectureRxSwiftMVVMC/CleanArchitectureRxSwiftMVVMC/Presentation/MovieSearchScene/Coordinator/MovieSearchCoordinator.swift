@@ -9,16 +9,14 @@ import UIKit
 
 class MovieSearchCoordinator: Coordinator {
 
-    var id: UUID
     var parentCoordinator: ParentCoordinator?
-    var childCoordinators: [UUID: ChildCoordinator]
+    var childCoordinators: [ChildCoordinator]
     private var navigationController: UINavigationController
     private var tabBarController: UITabBarController
     private var page: TabBarPage
 
     init(navigationController: UINavigationController, tabBarController: UITabBarController, page: TabBarPage) {
-        self.id = UUID()
-        self.childCoordinators = [:]
+        self.childCoordinators = []
         self.navigationController = navigationController
         self.tabBarController = tabBarController
         self.page = page
@@ -35,7 +33,10 @@ class MovieSearchCoordinator: Coordinator {
         movieSearchViewController.view.backgroundColor = .white
     }
 
-    func childCoordinator<T>(withIdentifier id: UUID, didResignActiveWith result: T) {
-        self.childCoordinators.removeValue(forKey: id)
+    func childCoordinator(
+    _ childCoordinator: ChildCoordinator,
+    didResignActiveWith result: CoordinationResult
+    ) {
+        self.childCoordinators = self.childCoordinators.filter { $0 !== childCoordinator }
     }
 }

@@ -8,9 +8,7 @@
 import Foundation
 
 protocol ChildCoordinator: AnyObject {
-    typealias ID = UUID
 
-    var id: ID { get }
     var parentCoordinator: ParentCoordinator? { get set }
 
     func start()
@@ -18,12 +16,26 @@ protocol ChildCoordinator: AnyObject {
 
 protocol ParentCoordinator: AnyObject {
 
-    var childCoordinators: [UUID: ChildCoordinator] { get set }
+    var childCoordinators: [ChildCoordinator] { get set }
 
-    func childCoordinator<T>(
-        withIdentifier id: ChildCoordinator.ID,
-        didResignActiveWith result: T
+    func childCoordinator(
+        _ childCoordinator: ChildCoordinator,
+        didResignActiveWith result: CoordinationResult
     )
 }
 
 protocol Coordinator: ChildCoordinator, ParentCoordinator { }
+
+extension Coordinator {
+
+    func finish() {
+        self.childCoordinators.removeAll()
+        self.parentCoordinator?.childCoordinator(self, didResignActiveWith: .none)
+    }
+}
+
+enum CoordinationResult {
+    case none
+    case integer(Int)
+    case string(String)
+}

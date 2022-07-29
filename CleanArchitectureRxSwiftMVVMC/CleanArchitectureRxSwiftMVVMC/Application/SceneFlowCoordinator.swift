@@ -9,11 +9,11 @@ import UIKit
 
 class SceneFlowCoordinator: ParentCoordinator {
 
-    var childCoordinators: [UUID: ChildCoordinator]
+    var childCoordinators: [ChildCoordinator]
     private var window: UIWindow
 
     init(window: UIWindow) {
-        self.childCoordinators = [:]
+        self.childCoordinators = []
         self.window = window
     }
 
@@ -26,15 +26,15 @@ class SceneFlowCoordinator: ParentCoordinator {
         )
         mainTabBarFlowCoordinator.parentCoordinator = self
         mainTabBarFlowCoordinator.start()
-        self.childCoordinators[mainTabBarFlowCoordinator.id] = mainTabBarFlowCoordinator
+        self.childCoordinators.append(mainTabBarFlowCoordinator)
         self.window.rootViewController = navigationController
         self.window.makeKeyAndVisible()
     }
 
-    func childCoordinator<T>(
-        withIdentifier id: UUID,
-        didResignActiveWith result: T
+    func childCoordinator(
+        _ childCoordinator: ChildCoordinator,
+        didResignActiveWith result: CoordinationResult
     ) {
-        self.childCoordinators.removeValue(forKey: id)
+        self.childCoordinators = self.childCoordinators.filter { $0 !== childCoordinator }
     }
 }
