@@ -30,6 +30,6 @@ class MainTabBarFlowCoordinator: Coordinator<Void> {
             page: .movieSearch
         )
         
-        self.activate(childCoordinator: movieSearchCoordinator)
+        self.activateChild(movieSearchCoordinator)
     }
 }

@@ -39,7 +39,7 @@ class Coordinator<CoordinationResult>: ChildCoordinator, ParentCoordinator {
         )
     }
 
-    func activate(childCoordinator: ChildCoordinator) {
+    func activateChild(_ childCoordinator: ChildCoordinator) {
         self.childCoordinators.append(childCoordinator)
         childCoordinator.parentCoordinator = self
         childCoordinator.start()
