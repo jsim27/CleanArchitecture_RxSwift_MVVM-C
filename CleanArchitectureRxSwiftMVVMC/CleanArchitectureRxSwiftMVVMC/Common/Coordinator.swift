@@ -28,7 +28,7 @@ protocol Coordinator: ChildCoordinator, ParentCoordinator { }
 
 extension Coordinator {
 
-    func finish() {
+    func resignActive() {
         self.childCoordinators.removeAll()
         self.parentCoordinator?.childCoordinator(self, didResignActiveWith: .none)
     }
