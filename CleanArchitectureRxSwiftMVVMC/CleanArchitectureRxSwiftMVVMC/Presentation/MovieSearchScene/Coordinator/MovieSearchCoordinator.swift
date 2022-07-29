@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MovieSearchCoordinator: Coordinator<Void> {
+final class MovieSearchCoordinator: Coordinator<Void> {
 
     private var navigationController: UINavigationController
     private var tabBarController: UITabBarController

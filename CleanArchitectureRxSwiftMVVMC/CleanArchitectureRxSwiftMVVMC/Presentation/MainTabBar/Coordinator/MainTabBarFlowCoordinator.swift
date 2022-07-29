@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainTabBarFlowCoordinator: Coordinator<Void> {
+final class MainTabBarFlowCoordinator: Coordinator<Void> {
 
     var navigationController: UINavigationController
     var tabBarController: UITabBarController

@@ -39,13 +39,13 @@ class Coordinator<CoordinationResult>: ChildCoordinator, ParentCoordinator {
         )
     }
 
-    func activateChild(_ childCoordinator: ChildCoordinator) {
+    final func activateChild(_ childCoordinator: ChildCoordinator) {
         self.childCoordinators.append(childCoordinator)
         childCoordinator.parentCoordinator = self
         childCoordinator.start()
     }
     
-    func resignActive(with coordinationResult: CoordinationResult? = nil) {
+    final func resignActive(with coordinationResult: CoordinationResult? = nil) {
         self.childCoordinators.removeAll()
         self.parentCoordinator?.childCoordinator(
             self,
