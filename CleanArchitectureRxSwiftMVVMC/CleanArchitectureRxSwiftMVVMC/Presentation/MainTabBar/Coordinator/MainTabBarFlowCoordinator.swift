@@ -18,18 +18,67 @@ final class MainTabBarFlowCoordinator: Coordinator<Void> {
     }
 
     override func start() {
-        self.tabBarController.setViewControllers([], animated: false)
+        self.prepareTabBarController()
         self.navigationController.viewControllers = [self.tabBarController]
-        self.activateMovieSearchCoordinator()
     }
 
-    private func activateMovieSearchCoordinator() {
-        let movieSearchCoordinator = MovieSearchCoordinator(
-            navigationController: self.navigationController,
-            tabBarController: self.tabBarController,
-            page: .movieSearch
-        )
-        
-        self.activateChild(movieSearchCoordinator)
+    private func prepareTabBarController() {
+        let viewControllers = Self.TabBarPage.allCases
+            .map { $0.getViewController() }
+        self.tabBarController.setViewControllers(viewControllers, animated: false)
+        self.tabBarController.selectedIndex = 0
+        self.tabBarController.tabBar.isTranslucent = false
+    }
+}
+
+extension MainTabBarFlowCoordinator {
+
+    enum TabBarPage: CaseIterable {
+        case movieSearch
+
+        init?(index: Int) {
+            switch index {
+            case 0:
+                self = .movieSearch
+            default:
+                return nil
+            }
+        }
+
+        var title: String {
+            switch self {
+            case .movieSearch:
+                return "영화 검색"
+            }
+        }
+
+        var index: Int {
+            switch self {
+            case .movieSearch:
+                return 0
+            }
+        }
+
+        var image: UIImage? {
+            switch self {
+            case .movieSearch:
+                return nil
+            }
+        }
+
+        private func getTabBarItem() -> UITabBarItem {
+            return UITabBarItem(title: self.title, image: self.image, tag: self.index)
+        }
+
+        func getViewController() -> UIViewController {
+            switch self {
+            case .movieSearch:
+                let vc = MovieSearchViewController()
+                vc.tabBarItem = self.getTabBarItem()
+                //TODO: - should inject ViewModels
+                //TODO: - should inject self as coordinator to ViewModel of each VCs
+                return vc
+            }
+        }
     }
 }

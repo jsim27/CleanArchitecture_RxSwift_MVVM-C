@@ -18,10 +18,8 @@
 		377EA16F2891BAF9003080F3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 377EA16E2891BAF9003080F3 /* SnapKit */; };
 		377EA1722891BB07003080F3 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 377EA1712891BB07003080F3 /* Then */; };
 		377EA1902893370E003080F3 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377EA18F2893370E003080F3 /* Coordinator.swift */; };
-		377EA19A28933719003080F3 /* MovieSearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377EA19428933719003080F3 /* MovieSearchCoordinator.swift */; };
 		377EA19B28933719003080F3 /* MovieSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377EA19528933719003080F3 /* MovieSearchViewController.swift */; };
 		377EA19C28933719003080F3 /* MainTabBarFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377EA19828933719003080F3 /* MainTabBarFlowCoordinator.swift */; };
-		377EA19D28933719003080F3 /* TabBarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377EA19928933719003080F3 /* TabBarPage.swift */; };
 		377EA1A0289338EE003080F3 /* SceneFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377EA19F289338EE003080F3 /* SceneFlowCoordinator.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,10 +32,8 @@
 		377EA15D2891A3D9003080F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		377EA1642891A955003080F3 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		377EA18F2893370E003080F3 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		377EA19428933719003080F3 /* MovieSearchCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieSearchCoordinator.swift; sourceTree = "<group>"; };
 		377EA19528933719003080F3 /* MovieSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieSearchViewController.swift; sourceTree = "<group>"; };
 		377EA19828933719003080F3 /* MainTabBarFlowCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarFlowCoordinator.swift; sourceTree = "<group>"; };
-		377EA19928933719003080F3 /* TabBarPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarPage.swift; sourceTree = "<group>"; };
 		377EA19F289338EE003080F3 /* SceneFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneFlowCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,24 +103,14 @@
 		377EA19228933719003080F3 /* MovieSearchScene */ = {
 			isa = PBXGroup;
 			children = (
-				377EA19328933719003080F3 /* Coordinator */,
 				377EA19528933719003080F3 /* MovieSearchViewController.swift */,
 			);
 			path = MovieSearchScene;
 			sourceTree = "<group>";
 		};
-		377EA19328933719003080F3 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				377EA19428933719003080F3 /* MovieSearchCoordinator.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
 		377EA19628933719003080F3 /* MainTabBar */ = {
 			isa = PBXGroup;
 			children = (
-				377EA19928933719003080F3 /* TabBarPage.swift */,
 				377EA19728933719003080F3 /* Coordinator */,
 			);
 			path = MainTabBar;
@@ -253,9 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				377EA1902893370E003080F3 /* Coordinator.swift in Sources */,
-				377EA19A28933719003080F3 /* MovieSearchCoordinator.swift in Sources */,
 				377EA1502891A3D7003080F3 /* AppDelegate.swift in Sources */,
-				377EA19D28933719003080F3 /* TabBarPage.swift in Sources */,
 				377EA1522891A3D7003080F3 /* SceneDelegate.swift in Sources */,
 				377EA19B28933719003080F3 /* MovieSearchViewController.swift in Sources */,
 				377EA19C28933719003080F3 /* MainTabBarFlowCoordinator.swift in Sources */,
