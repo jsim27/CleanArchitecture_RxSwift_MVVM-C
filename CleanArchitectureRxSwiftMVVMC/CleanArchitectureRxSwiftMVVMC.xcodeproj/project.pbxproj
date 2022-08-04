@@ -22,6 +22,7 @@
 		377EA19C28933719003080F3 /* MainTabBarFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377EA19828933719003080F3 /* MainTabBarFlowCoordinator.swift */; };
 		377EA1A0289338EE003080F3 /* SceneFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377EA19F289338EE003080F3 /* SceneFlowCoordinator.swift */; };
 		379E8E43289AC45700989FBF /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379E8E42289AC45700989FBF /* ViewModelProtocol.swift */; };
+		379E8E45289AEBB800989FBF /* MovieSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379E8E44289AEBB800989FBF /* MovieSearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		377EA19828933719003080F3 /* MainTabBarFlowCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarFlowCoordinator.swift; sourceTree = "<group>"; };
 		377EA19F289338EE003080F3 /* SceneFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneFlowCoordinator.swift; sourceTree = "<group>"; };
 		379E8E42289AC45700989FBF /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
+		379E8E44289AEBB800989FBF /* MovieSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				377EA19528933719003080F3 /* MovieSearchViewController.swift */,
+				379E8E44289AEBB800989FBF /* MovieSearchViewModel.swift */,
 			);
 			path = MovieSearchScene;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				379E8E43289AC45700989FBF /* ViewModelProtocol.swift in Sources */,
 				377EA19C28933719003080F3 /* MainTabBarFlowCoordinator.swift in Sources */,
 				377EA1A0289338EE003080F3 /* SceneFlowCoordinator.swift in Sources */,
+				379E8E45289AEBB800989FBF /* MovieSearchViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
